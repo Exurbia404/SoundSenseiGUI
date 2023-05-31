@@ -1,0 +1,2 @@
+C:\Users\tomvh\Documents\School\S3-2023\SoundSenseiGUI\obj\Debug\soundsenseigui.esproj.SuggestedBindingRedirects.cache
+C:\Users\tomvh\Documents\School\S3-2023\SoundSenseiGUI\obj\Debug\soundsenseigui.esproj.CoreCompileInputs.cache
