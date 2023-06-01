@@ -1,4 +1,4 @@
-import logo from "../assets/shopsyLogo.png";
+import logo from "../assets/soundsenseiLogo.png";
 import { BsCart4 } from "react-icons/bs";
 import { AiOutlineSearch } from "react-icons/ai";
 import { Link, useNavigate } from "react-router-dom";
@@ -37,7 +37,7 @@ const Navbar = () => {
                                 onClick={() => setMenuOpen(true)}
                             />
                             <img src={logo} alt="" />
-                            <h2 className="ml-3 sm:block hidden font-bold text-xl mb-0">Shopsy</h2>
+                            <h2 className="ml-3 sm:block hidden font-bold text-xl mb-0">SoundSensei</h2>
                         </div>
                     </Link>
                     <ul

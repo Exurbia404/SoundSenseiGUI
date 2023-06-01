@@ -1,11 +1,14 @@
 import { createAsyncThunk, createSlice, isRejectedWithValue } from "@reduxjs/toolkit";
 import axios from "axios";
 
-export const fetchAllProducts = createAsyncThunk('fetchAllProducts', async () => {
+export const fetchAllProducts = createAsyncThunk('fetchAllProducts', async (brandId) => {
     try {
+        let tempData
         const { data } = await axios.get(`${process.env.REACT_APP_BACKEND_URL}/api/Products`)
-        return data
-    } catch (error) {
+        tempData = typeof(brandId) === 'number' ? data.filter((prod)=> prod.brand_id == brandId) : brandId === 'Ascending' ? data.sort((a,b) => a.name > b.name ? 1 : -1) : brandId === 'Descending' ? data.sort((a,b) => a.name < b.name ? 1 : -1) : data.filter((prod)=> prod.brand_id != brandId)
+        console.log(tempData);
+        return tempData
+    } catch (error) { 
         return isRejectedWithValue(error.response.data)
     }
 })

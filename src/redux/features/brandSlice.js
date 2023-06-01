@@ -17,13 +17,22 @@ export const getBrandById = createAsyncThunk('getBrandById', async (id) => {
         return isRejectedWithValue(error.response.data)
     }
 })
+export const brandId = (id) =>{
+    return id
+}
 export const brandSlice = createSlice({
     name: 'brand',
     initialState: {
         loading: false,
         brands: [],
+        brandId : null,
         particularBrand : {},
         error: null
+    },
+    reducers : {
+        closeParticularBrand : (state) =>{
+            state.particularBrand = {} 
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(fetchBrands.pending, (state, action) => {
@@ -52,5 +61,7 @@ export const brandSlice = createSlice({
         })
     }
 })
+
+export const { closeParticularBrand } = brandSlice.actions
 
 export default brandSlice.reducer
