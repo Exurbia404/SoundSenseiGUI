@@ -1,0 +1,32 @@
+import { render, fireEvent } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import configureStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import Product from './Product';
+import { fetchAllProducts, closeParticularBrand } from '../redux/features/productSlice';
+
+const middlewares = [thunk];
+const mockStore = configureStore(middlewares);
+
+describe('Product Component - Functionality Test', () => {
+  let store;
+
+  beforeEach(() => {
+    store = mockStore({});
+    store.dispatch = jest.fn(); // Mock the dispatch function
+  });
+
+  it('dispatches fetchAllProducts and closeParticularBrand actions on close button click', () => {
+    const { getByTestId } = render(
+      <Provider store={store}>
+        <Product />
+      </Provider>
+    );
+
+    fireEvent.click(getByTestId('close-button'));
+
+    expect(store.dispatch).toHaveBeenCalledTimes(2);
+    expect(store.dispatch).toHaveBeenCalledWith(fetchAllProducts());
+    expect(store.dispatch).toHaveBeenCalledWith(closeParticularBrand());
+  });
+});

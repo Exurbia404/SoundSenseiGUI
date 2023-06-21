@@ -1,5 +1,5 @@
 import { render, screen } from '@testing-library/react';
-import ProductsOfTheDay from 'src\components\ProductsOfTheDay.js';
+import ProductsOfTheDay from '..src/components/ProductsOfTheDay.js';
 
 test('displays different random products on each render', () => {
   render(<ProductsOfTheDay />);
